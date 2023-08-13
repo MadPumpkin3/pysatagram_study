@@ -1,10 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Feeds</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-  <h1>Feeds</h1>
+    <div id="feeds">
+        <h1>Feeds</h1>
+        <div>{{ user.username }} (iD: {{ user.id }})</div>
+        <a href="/users/logout/" class="btn btn-logout">로그아웃</a>
+    </div>
 </body>
 </html>
