@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Post(models.Model):
+    objects = models.Manager()
     user = models.ForeignKey(
         "users.User",
         verbose_name="작성자",
@@ -13,6 +14,7 @@ class Post(models.Model):
 
 
 class PostImage(models.Model):
+    objects = models.Manager()
     post = models.ForeignKey(
         Post,
         verbose_name="포스트",
@@ -22,6 +24,7 @@ class PostImage(models.Model):
 
 
 class Comment(models.Model):
+    objects = models.Manager()
     user = models.ForeignKey(
         "users.User",
         verbose_name="작성자",

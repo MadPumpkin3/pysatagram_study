@@ -1,14 +1,19 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <div id="feeds">
-        <h1>Feeds</h1>
-        <div>{{ user.username }} (iD: {{ user.id }})</div>
-        <a href="/users/logout/" class="btn btn-logout">로그아웃</a>
-    </div>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<nav>
+    <h1>Pystagram</h1>
+</nav>
+<div id="feeds" class="post-container">
+    <!-- 전달된 Post QuerySet 객체를 순회 -->
+    {% for post in posts %}
+    <article class="post">
+        <header class="post-header">
+            {% if post.user.profile_image %}
+            <img src="{{ post.user.profile_image.url }}">
+            {% endif %}
+            <span>{{ post.user.username }}</span>
+        </header>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}
