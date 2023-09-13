@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <nav>
-    <h1>Pystagram</h1>
+    <h1>
+        <a href="/posts/feeds/">Pystagram</a>
+    </h1>
 </nav>
 <div id="feeds" class="post-container">
     <!-- 전달된 Post QuerySet 객체를 순회 -->
@@ -13,7 +15,32 @@
             {% endif %}
             <span>{{ post.user.username }}</span>
         </header>
+        <!-- 이미지 슬라이드 영역 시작 -->
+        <div class="post-images splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for image in post.postimage_set.all %}
+                        {% if image.photo %}
+                            <li class="splide__slide">
+                                <img src="{{ image.photo.url }}">
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <!-- 이미지 슬라이드 영역 종료 -->
     </article>
     {% endfor %}
 </div>
+<!-- content 블록의 최하단에 작성한다. -->
+<script>
+    const elms = document.getElementsByClassName('splide');
+    for (let i = 0; i < elms.length; i++) {
+        new Splide(elms[i]).mount();
+    }
+</script>
 {% endblock %}
+
+
+
