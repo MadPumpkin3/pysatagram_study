@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <nav>
+<<<<<<< HEAD
     <h1>
         <a href="/posts/feeds/">Pystagram</a>
     </h1>
     <a href="/user/logout/">Logout</a>
+=======
+    <h1>Pystagram</h1>
+>>>>>>> parent of 9adcf0a (2023.9.13 study)
 </nav>
 <div id="feeds" class="post-container">
     <!-- 전달된 Post QuerySet 객체를 순회 -->
@@ -16,6 +20,7 @@
             {% endif %}
             <span>{{ post.user.username }}</span>
         </header>
+<<<<<<< HEAD
         <!-- 이미지 슬라이드 영역 시작 -->
         <div class="post-images splide">
             <div class="splide__track">
@@ -53,17 +58,9 @@
             <input type="text" placeholder="댓글 달기...">
             <button type="submit">게시</button>
         </div>
+=======
+>>>>>>> parent of 9adcf0a (2023.9.13 study)
     </article>
     {% endfor %}
 </div>
-<!-- content 블록의 최하단에 작성한다. -->
-<script>
-    const elms = document.getElementsByClassName('splide');
-    for (let i = 0; i < elms.length; i++) {
-        new Splide(elms[i]).mount();
-    }
-</script>
 {% endblock %}
-
-
-
