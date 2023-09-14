@@ -4,6 +4,7 @@
     <h1>
         <a href="/posts/feeds/">Pystagram</a>
     </h1>
+    <a href="/user/logout/">Logout</a>
 </nav>
 <div id="feeds" class="post-container">
     <!-- 전달된 Post QuerySet 객체를 순회 -->
@@ -30,6 +31,28 @@
             </div>
         </div>
         <!-- 이미지 슬라이드 영역 종료 -->
+        <div class="post-content">
+            {{ post.content|linebreaksbr }}
+        </div>
+        <div class="post-buttons">
+            <button>Likes(0)</button>
+            <span>Comments(0)</span>
+        </div>
+        <div class="post-comments">
+            <ul>
+                {% for comment in post.comment_set.all %}
+                    <li>
+                        <span>{{ comment.user.username }}</span>
+                        <span>{{ comment.content }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <small>{{ post.created }}</small>
+        <div class="post-comment-create">
+            <input type="text" placeholder="댓글 달기...">
+            <button type="submit">게시</button>
+        </div>
     </article>
     {% endfor %}
 </div>

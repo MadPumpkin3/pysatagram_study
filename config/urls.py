@@ -27,6 +27,8 @@ urlpatterns = [
     path("", index),
 ]
 urlpatterns += static(
+    # URL의 접두어가 MEDIA_URL일 때는 정적파일을 돌려준다
     prefix=settings.MEDIA_URL,
+    # 돌려줄 디렉터리는 MEDIA_ROOT를 기준으로 한다.
     document_root=settings.MEDIA_ROOT,
 )
